@@ -1,0 +1,4 @@
+# tests/ 전용: 상위 폴더의 .clang-tidy 를 그대로 쓰고 아래 검사만 끈다.
+# TEST_CASE 는 프로그램 시작 전에 테스트를 목록에 등록하는데(정적 초기화), 이 검사는 그 방식 자체를 경고한다.
+InheritParentConfig: true
+Checks: '-bugprone-throwing-static-initialization'

@@ -1,0 +1,14 @@
+# 빌드 폴더 (프리셋은 build/<프리셋 이름>/ 을 쓴다)
+build/
+out/
+.vs/
+.cache/
+
+# scripts/install-lint-tools.cmake 가 받은 clang-format / clang-tidy
+.tools/
+
+# 개인용 CMake 프리셋 (컴파일러 경로 등 각자 다른 설정)
+CMakeUserPresets.json
+
+# ImGui 가 실행 폴더에 저장하는 창 배치
+imgui.ini

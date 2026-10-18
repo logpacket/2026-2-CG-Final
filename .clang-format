@@ -1,0 +1,46 @@
+# clang-format 23 규칙. 적용: cmake --build --preset <프리셋> --target format
+# 기준은 LLVM 스타일이고, 아래는 이 프로젝트에서 바꾼 부분이다.
+BasedOnStyle: LLVM
+Language: Cpp
+Standard: c++17
+
+IndentWidth: 4
+ColumnLimit: 110
+AccessModifierOffset: -4          # public:/private: 를 class 와 같은 칸에
+IndentCaseLabels: true
+PointerAlignment: Left            # int* p
+DerivePointerAlignment: false
+NamespaceIndentation: None
+FixNamespaceComments: true
+
+# 함수 본문의 { 만 다음 줄에, if/for/class 의 { 는 같은 줄에 둔다.
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterClass: false
+  AfterStruct: false
+  AfterEnum: false
+  AfterNamespace: false
+  AfterControlStatement: Never
+  BeforeElse: false
+  BeforeCatch: false
+  SplitEmptyFunction: false
+
+AllowShortFunctionsOnASingleLine: Inline   # 클래스 안의 짧은 getter 만 한 줄 허용
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+
+SpacesBeforeTrailingComments: 2
+ReflowComments: false             # 한글 주석을 마음대로 줄바꿈하지 않는다
+
+# include 순서: 자기 헤더 → 프로젝트 헤더("...") → 외부 라이브러리 → 표준 라이브러리
+SortIncludes: CaseInsensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^"'
+    Priority: 1
+  - Regex: '^<(glad|GLFW|glm|imgui|KHR)'
+    Priority: 2
+  - Regex: '^<'
+    Priority: 3

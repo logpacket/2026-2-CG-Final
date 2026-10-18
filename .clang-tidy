@@ -1,0 +1,48 @@
+# clang-tidy 23 규칙. 실행: cmake --preset <프리셋> -DVE_CLANG_TIDY=ON 후 빌드
+# 입문자에게 의미 있는 검사만 켰다. 경고가 납득되지 않으면 그 줄에 // NOLINT(검사이름) 를 달고 이유를 적는다.
+Checks: >
+  -*,
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+  clang-analyzer-*,
+  cppcoreguidelines-no-malloc,
+  cppcoreguidelines-owning-memory,
+  cppcoreguidelines-special-member-functions,
+  modernize-use-nullptr,
+  modernize-use-override,
+  modernize-use-using,
+  modernize-use-equals-delete,
+  modernize-use-equals-default,
+  performance-*,
+  readability-braces-around-statements,
+  readability-container-size-empty,
+  readability-else-after-return,
+  readability-identifier-naming,
+  readability-redundant-*,
+  misc-unused-parameters,
+  misc-unused-using-decls
+
+WarningsAsErrors: '*'
+
+# 우리 코드의 헤더만 검사하고, 내려받은 라이브러리(_deps)와 GLAD 는 제외한다.
+HeaderFilterRegex: '.*'
+ExcludeHeaderFilterRegex: '.*(_deps|external).*'
+
+CheckOptions:
+  # raw new/delete 대신 std::unique_ptr / 컨테이너를 쓴다 (cppcoreguidelines-owning-memory)
+  # 클래스가 소멸자를 정의하면 복사/이동도 명시한다 (special-member-functions)
+  cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: true
+  # 이름 규칙: 클래스 PascalCase, 함수/변수 camelCase, private 멤버는 끝에 _, 상수는 kPascalCase
+  readability-identifier-naming.ClassCase: CamelCase
+  readability-identifier-naming.StructCase: CamelCase
+  readability-identifier-naming.EnumCase: CamelCase
+  readability-identifier-naming.EnumConstantCase: CamelCase
+  readability-identifier-naming.FunctionCase: camelBack
+  readability-identifier-naming.MethodCase: camelBack
+  readability-identifier-naming.ParameterCase: camelBack
+  readability-identifier-naming.LocalVariableCase: camelBack
+  readability-identifier-naming.PrivateMemberCase: camelBack
+  readability-identifier-naming.PrivateMemberSuffix: _
+  readability-identifier-naming.ConstexprVariableCase: CamelCase
+  readability-identifier-naming.ConstexprVariablePrefix: k
+  readability-identifier-naming.NamespaceCase: lower_case
