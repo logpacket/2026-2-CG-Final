@@ -72,3 +72,11 @@ struct Registrar {
                                       std::to_string(testExpected));                                         \
         }                                                                                                    \
     } while (false)
+
+// 3차원 벡터(glm::vec3 처럼 .x .y .z 가 있는 값) 비교: 세 성분이 모두 tolerance 안이어야 통과한다.
+#define CHECK_VEC3_NEAR(actual, expected, tolerance)                                                         \
+    do {                                                                                                     \
+        CHECK_NEAR((actual).x, (expected).x, tolerance);                                                     \
+        CHECK_NEAR((actual).y, (expected).y, tolerance);                                                     \
+        CHECK_NEAR((actual).z, (expected).z, tolerance);                                                     \
+    } while (false)
