@@ -1,4 +1,3 @@
-// Owner: 코어
 // FrameTimer 구현.
 #include "core/FrameTimer.h"
 

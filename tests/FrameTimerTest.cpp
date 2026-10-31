@@ -1,4 +1,3 @@
-// Owner: 코어
 // FrameTimer 단위 테스트 (테스트 작성 예시로도 쓴다).
 #include "core/FrameTimer.h"
 

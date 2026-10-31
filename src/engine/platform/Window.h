@@ -1,4 +1,3 @@
-// Owner: 코어
 // GLFW 창과 OpenGL 4.1 Core 컨텍스트를 만들고 GLAD 로 GL 함수를 불러온다.
 #pragma once
 

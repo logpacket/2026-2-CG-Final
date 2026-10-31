@@ -1,4 +1,3 @@
-// Owner: B
 // drawDebugPanel 구현.
 #include "exhibition/ui/DebugPanel.h"
 

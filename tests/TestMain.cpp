@@ -1,4 +1,3 @@
-// Owner: 코어
 // 단위 테스트 실행기: 등록된 TEST_CASE 를 모두(또는 이름이 맞는 것만) 실행하고 결과를 출력한다.
 #include "TestFramework.h"
 

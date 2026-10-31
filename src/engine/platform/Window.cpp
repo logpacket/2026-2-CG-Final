@@ -1,4 +1,3 @@
-// Owner: 코어
 // Window 구현: GLFW/GLAD 초기화와 정리.
 #include "engine/platform/Window.h"
 

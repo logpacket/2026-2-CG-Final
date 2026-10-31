@@ -1,4 +1,3 @@
-// Owner: 코어
 // 프로그램 진입점: App 을 만들어 실행한다.
 #include "app/App.h"
 

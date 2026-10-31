@@ -1,4 +1,3 @@
-// Owner: 코어
 // App 구현: 메인 루프.
 #include "app/App.h"
 

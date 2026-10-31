@@ -1,4 +1,3 @@
-// Owner: 코어
 // ImGuiLayer 구현.
 #include "engine/platform/ImGuiLayer.h"
 

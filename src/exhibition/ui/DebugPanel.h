@@ -1,4 +1,3 @@
-// Owner: B
 // 디버그 패널: FPS 표시와 기본 설정(배경색, VSync, ImGui 데모 창)을 그리는 ImGui 함수.
 #pragma once
 

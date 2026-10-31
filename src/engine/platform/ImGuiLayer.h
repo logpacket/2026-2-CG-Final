@@ -1,4 +1,3 @@
-// Owner: 코어
 // Dear ImGui 초기화/정리와 프레임 시작·끝 처리를 감싼다.
 #pragma once
 
