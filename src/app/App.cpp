@@ -1,4 +1,3 @@
-// App 구현: 메인 루프.
 #include "app/App.h"
 
 #include <glad/glad.h>
@@ -41,7 +40,7 @@ void App::run()
 void App::handleKeys()
 {
     if (imgui_.wantsKeyboard()) {
-        return;  // ImGui 입력창에 글자를 치는 중이면 단축키를 무시
+        return;
     }
     GLFWwindow* window = window_.handle();
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {

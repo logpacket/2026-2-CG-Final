@@ -1,4 +1,3 @@
-// FrameTimer 구현.
 #include "core/FrameTimer.h"
 
 #include <algorithm>

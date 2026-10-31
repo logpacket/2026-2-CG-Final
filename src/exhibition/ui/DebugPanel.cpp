@@ -1,4 +1,3 @@
-// drawDebugPanel 구현.
 #include "exhibition/ui/DebugPanel.h"
 
 #include <glm/gtc/type_ptr.hpp>

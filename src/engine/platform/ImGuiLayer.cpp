@@ -1,4 +1,3 @@
-// ImGuiLayer 구현.
 #include "engine/platform/ImGuiLayer.h"
 
 #include <imgui.h>
@@ -7,7 +6,7 @@
 
 namespace {
 
-constexpr const char* kGlslVersion = "#version 410";  // OpenGL 4.1 에 맞춘 GLSL 버전
+constexpr const char* kGlslVersion = "#version 410";
 
 }  // namespace
 

@@ -1,4 +1,4 @@
-// 디버그 패널: FPS 표시와 기본 설정(배경색, VSync, ImGui 데모 창)을 그리는 ImGui 함수.
+// 디버그 패널: FPS 를 보여 주고 기본 설정을 바꾸는 ImGui 패널.
 #pragma once
 
 #include <glm/vec2.hpp>
@@ -18,7 +18,7 @@ struct DebugPanelInfo {
 struct DebugPanelSettings {
     glm::vec3 clearColor{0.10f, 0.11f, 0.13f};
     bool vsync = true;
-    bool showImGuiDemo = false;  // ImGui 위젯 예제 창 (ImGui 사용법을 익힐 때 유용)
+    bool showImGuiDemo = false;
 };
 
 void drawDebugPanel(const DebugPanelInfo& info, DebugPanelSettings& settings);

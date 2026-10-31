@@ -1,4 +1,4 @@
-// 아주 작은 단위 테스트 도구. 허용 라이브러리 밖의 테스트 프레임워크를 쓰지 않기 위해 직접 만들었다.
+// 작은 단위 테스트 도구. 허용된 라이브러리 밖의 테스트 프레임워크는 쓸 수 없어서 직접 만들었다.
 #pragma once
 
 #include <cmath>
@@ -38,7 +38,6 @@ struct TestCase {
 // 등록된 모든 테스트 (TEST_CASE 가 프로그램 시작 전에 여기에 넣는다)
 std::vector<TestCase>& registry();
 
-// CHECK 가 실패하면 호출된다. 실패를 기록하고 메시지를 출력한다.
 void reportFailure(const char* file, int line, const std::string& message);
 
 struct Registrar {
@@ -61,7 +60,7 @@ struct Registrar {
         }                                                                                                    \
     } while (false)
 
-// 실수 비교: |actual - expected| <= tolerance 이어야 통과한다.
+// 부동소수점 비교: |actual - expected| <= tolerance 이어야 통과한다.
 #define CHECK_NEAR(actual, expected, tolerance)                                                              \
     do {                                                                                                     \
         const double testActual = static_cast<double>(actual);                                               \

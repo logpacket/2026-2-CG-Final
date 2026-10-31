@@ -13,7 +13,7 @@
     {
       "name": "windows-msvc",
       "displayName": "Windows - Visual Studio (MSVC)",
-      "description": "가장 최근에 설치된 Visual Studio 와 MSVC 로 빌드한다 (멀티 구성: Debug/Release)",
+      "description": "가장 최근에 설치된 Visual Studio 와 MSVC 로 빌드한다 (다중 구성: Debug/Release)",
       "inherits": "base",
       "architecture": { "value": "x64", "strategy": "set" },
       "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" }

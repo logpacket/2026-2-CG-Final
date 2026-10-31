@@ -1,8 +1,8 @@
 # =============================================================================
-# 모듈 도우미. src/<모듈>/CMakeLists.txt 에서 ve_module(...) 한 번으로 모듈(정적 라이브러리)을 만든다.
+# 모듈을 만드는 함수. src/<모듈>/CMakeLists.txt 에서 ve_module(...) 한 번으로 모듈(정적 라이브러리)을 만든다.
 #
 #   ve_module(<이름>
-#     DEPENDS   <프로젝트 모듈 ...>     (선택) 이 모듈이 쓰는 아래 모듈
+#     DEPENDS   <프로젝트 모듈 ...>     (선택) 이 모듈이 쓰는 하위 모듈
 #     LIBRARIES <외부 라이브러리 ...>   (선택) glm, glad, glfw, imgui 중 이 모듈이 직접 쓰는 것
 #   )
 #
@@ -10,8 +10,8 @@
 #   새 파일은 다음 빌드 때 자동으로 포함된다.
 # - 의존은 PUBLIC 이다: 이 모듈을 쓰는 쪽도 의존 모듈의 헤더를 쓸 수 있다.
 # - 의존 규칙: DEPENDS 에는 src/CMakeLists.txt 에서 **먼저 추가된** 모듈만 올 수 있다. 어기면 configure 가 실패한다.
-#   그래서 위 모듈 → 아래 모듈 한 방향으로만 의존하고, 서로 맞물린(순환) 의존이 생기지 않는다.
-# - 외부 라이브러리 헤더는 LIBRARIES 로 연결한 모듈(과 그 위)에서만 보인다.
+#   그래서 상위 모듈 → 하위 모듈 한 방향으로만 의존하고, 순환 의존이 생기지 않는다.
+# - 외부 라이브러리 헤더는 LIBRARIES 로 링크한 모듈과 그 상위 모듈에서만 보인다.
 #   예: core 에서 <glad/glad.h> 나 <GLFW/glfw3.h> 를 include 하면 컴파일 에러가 난다.
 # =============================================================================
 
@@ -33,7 +33,6 @@ endfunction()
 function(ve_module name)
   cmake_parse_arguments(PARSE_ARGV 1 arg "" "" "DEPENDS;LIBRARIES")
 
-  # 의존 규칙 검사: 먼저 추가된 모듈에만 의존할 수 있다.
   get_property(defined_modules GLOBAL PROPERTY VE_MODULES)
   foreach(dep IN LISTS arg_DEPENDS)
     if(NOT ve_${dep} IN_LIST defined_modules)

@@ -1,4 +1,3 @@
-// 단위 테스트 실행기: 등록된 TEST_CASE 를 모두(또는 이름이 맞는 것만) 실행하고 결과를 출력한다.
 #include "TestFramework.h"
 
 #include <cstdio>
@@ -29,7 +28,6 @@ void reportFailure(const char* file, int line, const std::string& message)
 
 int main(int argc, char** argv)
 {
-    // 인자를 주면 이름에 그 글자가 들어간 테스트만 실행한다.
     const char* filter = argc > 1 ? argv[1] : nullptr;
     int run = 0;
     int failed = 0;

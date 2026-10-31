@@ -71,7 +71,7 @@ ctest --preset <preset>
 
 | 하고 싶은 것 | 명령 |
 |---|---|
-| 코드 모양 자동 정리 | `cmake --build --preset <preset> --target format` |
+| 코드 서식 자동 정리 | `cmake --build --preset <preset> --target format` |
 | 정리 안 된 곳 검사 | `cmake --build --preset <preset> --target format-check` |
 | 빌드하면서 clang-tidy 검사 | `cmake --preset <preset> -DVE_CLANG_TIDY=ON` 후 평소처럼 빌드 (Ninja/Makefile 프리셋만) |
 
@@ -104,7 +104,7 @@ graph TD
 | `engine` (`ve_engine`) | 화면에 그리고 조작하는 공통 기능 | `platform/` 창·입력·ImGui 초기화, `gfx/` OpenGL 래퍼, `scene/` Transform·Entity·Camera, `interaction/` 피킹·조립 규칙 [코어], `render/` 렌더러·PBR [코어]·그림자 [A] |
 | `core` (`ve_core`) | GL·GLFW 없는 기반 코드 (수학, FrameTimer, 입력 상태) | `geometry/` MeshData·도형 생성 [B], 그 외 [코어] |
 
-- 위 모듈은 아래 모듈만 쓴다.
+- 상위 모듈은 하위 모듈만 쓴다.
   - 반대 방향으로 의존하면 configure 가 실패한다 (`cmake/ProjectModules.cmake`).
   - `core` 에서 GL·GLFW 헤더를 include 하면 컴파일 에러가 난다.
 - 모듈마다 `src/<모듈>/CMakeLists.txt` 가 있다. 하위 폴더는 정리와 담당 구분용이고, 그 안의 파일은 자동으로 빌드에 포함된다.

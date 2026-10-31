@@ -1,11 +1,10 @@
-// FrameTimer 단위 테스트 (테스트 작성 예시로도 쓴다).
 #include "core/FrameTimer.h"
 
 #include "TestFramework.h"
 
 namespace {
 
-constexpr double kFrame60 = 1.0 / 60.0;  // 60 FPS 일 때 한 프레임 시간
+constexpr double kFrame60 = 1.0 / 60.0;
 
 }  // namespace
 

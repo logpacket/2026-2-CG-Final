@@ -1,6 +1,6 @@
 # =============================================================================
 # C++ 린터
-#   clang-format : 코드 모양(들여쓰기, 줄바꿈, include 순서). 규칙은 .clang-format
+#   clang-format : 코드 서식(들여쓰기, 줄바꿈, include 순서). 규칙은 .clang-format
 #   clang-tidy   : 버그가 되기 쉬운 코드, 이름 규칙 검사. 규칙은 .clang-tidy
 #
 # 설치 (팀원 모두 같은 버전을 쓴다. 버전이 다르면 포맷 결과가 달라진다):
@@ -73,7 +73,7 @@ function(ve_enable_clang_tidy)
   endif()
   set(tidy_command ${CLANG_TIDY_EXE})
   if(MINGW)
-    # Windows 용 clang-tidy 는 기본으로 MSVC 헤더를 찾는다. MinGW 헤더를 쓰도록 대상을 알려 준다.
+    # Windows 용 clang-tidy 는 기본으로 MSVC 헤더를 찾으므로, MinGW 헤더를 쓰도록 타깃 트리플을 지정한다.
     list(APPEND tidy_command --extra-arg=--target=x86_64-w64-mingw32)
   endif()
   foreach(target IN LISTS ARGN)

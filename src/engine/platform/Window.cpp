@@ -1,4 +1,3 @@
-// Window 구현: GLFW/GLAD 초기화와 정리.
 #include "engine/platform/Window.h"
 
 #include <glad/glad.h>
@@ -9,11 +8,11 @@
 
 namespace {
 
-constexpr int kGLMajor = 4;  // OpenGL 4.1 Core (macOS 가 지원하는 최대 버전)
+constexpr int kGLMajor = 4;  // 4.1 은 macOS 가 지원하는 가장 높은 버전이다
 constexpr int kGLMinor = 1;
 constexpr int kDepthBits = 24;
 constexpr int kStencilBits = 8;
-constexpr int kMsaaSamples = 4;  // 계단 현상 완화
+constexpr int kMsaaSamples = 4;
 
 void onGlfwError(int code, const char* description)
 {
