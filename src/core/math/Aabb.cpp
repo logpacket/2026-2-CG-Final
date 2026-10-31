@@ -1,4 +1,3 @@
-// Aabb 구현.
 #include "core/math/Aabb.h"
 
 #include <glm/common.hpp>

@@ -1,4 +1,3 @@
-// MeshData 도우미 함수 구현.
 #include "core/geometry/MeshData.h"
 
 Aabb computeBounds(const MeshData& mesh)

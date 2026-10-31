@@ -1,4 +1,3 @@
-// MeshData(computeBounds)와 기본 도형(makePlane, makeBox) 단위 테스트.
 #include "core/geometry/Primitives.h"
 
 #include "core/geometry/MeshData.h"
@@ -13,7 +12,6 @@ namespace {
 
 constexpr double kEpsilon = 1e-5;
 
-// 모든 인덱스가 정점 배열 안을 가리키고, 개수가 3의 배수(삼각형 단위)인지
 bool indicesAreValidTriangles(const MeshData& mesh)
 {
     if (mesh.indices.size() % 3 != 0) {
@@ -27,7 +25,7 @@ bool indicesAreValidTriangles(const MeshData& mesh)
     return true;
 }
 
-// 모든 삼각형이 반시계(CCW)로 감겨 있는지: 꼭짓점 순서로 구한 면 노멀이 정점 노멀과 같은 쪽을 향해야 한다.
+// 앞면에서 볼 때 정점이 반시계 순서(CCW)인지: 정점 순서로 구한 면 노멀이 정점 노멀과 같은 쪽을 향해야 한다.
 bool trianglesWindTowardTheirNormals(const MeshData& mesh)
 {
     for (std::size_t i = 0; i + 2 < mesh.indices.size(); i += 3) {

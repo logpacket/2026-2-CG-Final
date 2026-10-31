@@ -1,4 +1,3 @@
-// 기본 도형 생성 구현.
 #include "core/geometry/Primitives.h"
 
 #include <glm/common.hpp>
@@ -13,8 +12,8 @@ constexpr std::size_t kBoxFaceCount = 6;
 constexpr std::size_t kQuadVertexCount = 4;
 constexpr std::size_t kQuadIndexCount = 6;
 
-// 사각형 하나를 삼각형 두 개로 추가한다. 네 꼭짓점은 center ± halfRight ± halfUp 이다.
-// right × up 이 normal 과 같은 방향이어야 앞면에서 볼 때 반시계(CCW)로 감긴다.
+// 사각형 하나를 삼각형 두 개로 나눠 추가한다.
+// right × up 이 normal 과 같은 방향이어야 앞면에서 볼 때 정점이 반시계 순서(CCW)가 된다.
 void appendQuad(MeshData& mesh, const glm::vec3& center, const glm::vec3& halfRight, const glm::vec3& halfUp,
                 const glm::vec3& normal)
 {
@@ -61,7 +60,7 @@ MeshData makeBox(const glm::vec3& size)
     mesh.vertices.reserve(kBoxFaceCount * kQuadVertexCount);
     mesh.indices.reserve(kBoxFaceCount * kQuadIndexCount);
     for (const Face& face : faces) {
-        // 축 방향 단위 벡터와 half 의 내적 = 그 축의 반 길이
+        // 축 방향 단위 벡터와 half 를 내적하면 그 축 길이의 절반이 나온다
         const float rightHalf = glm::dot(glm::abs(face.right), half);
         const float upHalf = glm::dot(glm::abs(face.up), half);
         appendQuad(mesh, face.normal * half, face.right * rightHalf, face.up * upHalf, face.normal);

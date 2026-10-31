@@ -111,4 +111,5 @@ graph TD
 - include 는 모듈 이름부터 쓴다: `#include "engine/platform/Window.h"`
 - 셰이더는 `assets/shaders/`, 모델(OBJ)은 `assets/models/` 에 둔다. 코드에서는 `assetPath("models/piston.obj")`
   (`core/AssetPath.h`) 로 경로를 만든다. 기준 폴더는 CMake 가 넣어 주므로 어디서 실행해도 같은 파일을 찾는다.
-- 좌표계는 오른손, Y-up, 단위 1 = 1 m. 삼각형은 앞면에서 볼 때 반시계 방향으로 감긴다 (`core/geometry/MeshData.h`).
+- 좌표계는 오른손 좌표계이고 Y축이 위, 길이 1 = 1 m 이다. 삼각형은 앞면에서 볼 때 정점이 반시계 순서로 놓인다
+  (`core/geometry/MeshData.h`).

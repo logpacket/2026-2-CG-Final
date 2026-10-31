@@ -1,4 +1,3 @@
-// assetPath 구현.
 #include "core/AssetPath.h"
 
 std::string assetPath(const std::string& relativePath)

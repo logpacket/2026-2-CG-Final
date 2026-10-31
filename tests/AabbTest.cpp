@@ -1,4 +1,3 @@
-// Aabb 단위 테스트.
 #include "core/math/Aabb.h"
 
 #include "TestFramework.h"
@@ -49,7 +48,7 @@ TEST_CASE(transformedByTranslationMovesBox)
 
 TEST_CASE(transformedByRotationRecomputesBounds)
 {
-    // x 로 긴 상자를 y 축으로 90도 돌리면 z 로 긴 상자가 된다.
+    // x축으로 긴 상자를 y축을 중심으로 90도 돌리면 z축으로 긴 상자가 된다.
     Aabb box;
     box.expand(glm::vec3(-2.0f, -0.5f, -0.5f));
     box.expand(glm::vec3(2.0f, 0.5f, 0.5f));
