@@ -33,11 +33,11 @@ std::vector<ExhibitSpec> exhibitSpecs()
     // 부품 사이를 1.2 m 쯤 띄워 x 축을 따라 한 줄로 놓는다.
     // 항목 순서: 경로, {색, metallic, roughness}, 바닥 위 자리 (x, z), y축 회전
     return {
-        {"models/gear.obj", {{0.78f, 0.60f, 0.28f}, 0.4f, 0.35f}, {-4.8f, 0.0f}, 0.0f},
-        {"models/cranksharft.obj", {{0.55f, 0.56f, 0.60f}, 0.4f, 0.30f}, {-1.4f, 0.0f}, 0.0f},
-        {"models/cylinder_block.obj", {{0.42f, 0.47f, 0.55f}, 0.2f, 0.55f}, {1.6f, 0.0f}, 0.0f},
-        {"models/piston_assembly.obj", {{0.75f, 0.76f, 0.78f}, 0.3f, 0.40f}, {4.5f, 0.0f}, 0.0f},
-        {"models/spark_plug.obj", {{0.92f, 0.91f, 0.88f}, 0.0f, 0.30f}, {6.3f, 0.0f}, 0.0f},
+        {"models/gear.obj", {{0.78f, 0.60f, 0.28f}, 0.4f, 0.35f}, {-6.2f, 0.0f}, 0.0f},
+        {"models/cranksharft.obj", {{0.55f, 0.56f, 0.60f}, 0.4f, 0.30f}, {-2.8f, 0.0f}, 0.0f},
+        {"models/cylinder_block.obj", {{0.42f, 0.47f, 0.55f}, 0.2f, 0.55f}, {1.0f, 0.0f}, 0.0f},
+        {"models/piston_assembly.obj", {{0.75f, 0.76f, 0.78f}, 0.3f, 0.40f}, {4.7f, 0.0f}, 0.0f},
+        {"models/spark_plug.obj", {{0.92f, 0.91f, 0.88f}, 0.0f, 0.30f}, {6.9f, 0.0f}, 0.0f},
     };
 }
 
