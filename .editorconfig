@@ -10,6 +10,11 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 4
 
+# GLSL 셰이더. clang-format 은 GLSL 을 지원하지 않으므로 편집기 설정으로만 맞춘다.
+[*.{vert,frag,geom,glsl}]
+indent_style = space
+indent_size = 4
+
 [{CMakeLists.txt,*.cmake}]
 indent_style = space
 indent_size = 2

@@ -5,9 +5,12 @@ Checks: >
   bugprone-*,
   -bugprone-easily-swappable-parameters,
   clang-analyzer-*,
+  cppcoreguidelines-init-variables,
   cppcoreguidelines-no-malloc,
   cppcoreguidelines-owning-memory,
+  cppcoreguidelines-pro-type-member-init,
   cppcoreguidelines-special-member-functions,
+  google-readability-casting,
   modernize-use-nullptr,
   modernize-use-override,
   modernize-use-using,
@@ -18,6 +21,7 @@ Checks: >
   readability-container-size-empty,
   readability-else-after-return,
   readability-identifier-naming,
+  readability-implicit-bool-conversion,
   readability-redundant-*,
   misc-unused-parameters,
   misc-unused-using-decls
@@ -30,6 +34,10 @@ ExcludeHeaderFilterRegex: '.*(_deps|external).*'
 
 CheckOptions:
   # raw new/delete 대신 std::unique_ptr / 컨테이너를 쓴다 (cppcoreguidelines-owning-memory)
+  # 지역 변수와 멤버는 선언할 때 초기화한다. GL 함수가 실패하면 출력 인자에 쓰레기 값이 남는다
+  #   (init-variables, pro-type-member-init)
+  # C 스타일 캐스트 (float)x 대신 static_cast 를 쓴다 (google-readability-casting)
+  # if (ptr) 대신 if (ptr != nullptr) 처럼 bool 변환을 드러낸다 (implicit-bool-conversion)
   # 클래스가 소멸자를 정의하면 복사/이동도 명시한다 (special-member-functions)
   cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: true
   # 이름 규칙: 클래스 PascalCase, 함수/변수 camelCase, private 멤버는 끝에 _, 상수는 kPascalCase
