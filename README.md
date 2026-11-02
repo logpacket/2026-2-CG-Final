@@ -111,5 +111,7 @@ graph TD
 - include 는 모듈 이름부터 쓴다: `#include "engine/platform/Window.h"`
 - 셰이더는 `assets/shaders/`, 모델(OBJ)은 `assets/models/` 에 둔다. 코드에서는 `assetPath("models/piston.obj")`
   (`core/AssetPath.h`) 로 경로를 만든다. 기준 폴더는 CMake 가 넣어 주므로 어디서 실행해도 같은 파일을 찾는다.
+- 전시할 부품 목록은 `exhibition/exhibits/Exhibits.cpp` 의 `exhibitSpecs()` 에 있다. OBJ 경로, 색, 바닥 위 자리를
+  한 줄씩 적으면 시작할 때 읽어서 바닥(y = 0)에 놓는다. 읽지 못한 파일은 1 m 상자로 대신 그린다.
 - 좌표계는 오른손 좌표계이고 Y축이 위, 길이 1 = 1 m 이다. 삼각형은 앞면에서 볼 때 정점이 반시계 순서로 놓인다
   (`core/geometry/MeshData.h`).
