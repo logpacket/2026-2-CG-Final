@@ -69,10 +69,25 @@ function(ve_enable_clang_tidy)
     message(FATAL_ERROR "VE_CLANG_TIDY=ON but clang-tidy was not found (install: cmake -P scripts/install-lint-tools.cmake)")
   endif()
   if(CMAKE_GENERATOR MATCHES "Visual Studio")
-    message(WARNING "VE_CLANG_TIDY needs a Ninja or Makefile generator (e.g. the windows-mingw preset)")
+    # Visual Studio 제너레이터에서는 CXX_CLANG_TIDY 가 동작하지 않는다.
+    # 대신 Visual Studio 의 코드 분석으로 빌드할 때마다 clang-tidy 를 돌린다 (.clang-tidy 를 그대로 읽는다).
+    get_filename_component(tidy_dir "${CLANG_TIDY_EXE}" DIRECTORY)
+    foreach(target IN LISTS ARGN)
+      set_target_properties(${target} PROPERTIES
+        VS_GLOBAL_RunCodeAnalysis true
+        VS_GLOBAL_EnableMicrosoftCodeAnalysis false
+        VS_GLOBAL_EnableClangTidyCodeAnalysis true
+        VS_GLOBAL_ClangTidyToolPath "${tidy_dir}"
+      )
+    endforeach()
+    return()
   endif()
   set(tidy_command ${CLANG_TIDY_EXE})
-  if(MINGW)
+  if(MSVC)
+    # CMake 는 컴파일 명령을 -- 뒤에 넘기는데, clang-tidy 는 거기서 / 로 시작하는 옵션을 파일 이름으로 보고 버린다.
+    # /EHsc 가 빠지면 예외가 꺼진 것으로 보고 throw/try 를 에러로 내므로 다시 넣어 준다.
+    list(APPEND tidy_command --extra-arg=/EHsc)
+  elseif(MINGW)
     # Windows 용 clang-tidy 는 기본으로 MSVC 헤더를 찾으므로, MinGW 헤더를 쓰도록 타깃 트리플을 지정한다.
     list(APPEND tidy_command --extra-arg=--target=x86_64-w64-mingw32)
   endif()

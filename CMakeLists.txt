@@ -20,7 +20,7 @@ cmake_minimum_required(VERSION 3.20)
 project(VirtualExhibition LANGUAGES C CXX)
 
 option(VE_BUILD_TESTS "단위 테스트(unit_tests)를 빌드한다" ON)
-option(VE_CLANG_TIDY "컴파일할 때 clang-tidy 를 함께 실행한다 (Ninja/Makefile 제너레이터만)" OFF)
+option(VE_CLANG_TIDY "컴파일할 때 clang-tidy 를 함께 실행한다" OFF)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

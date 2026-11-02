@@ -73,7 +73,7 @@ ctest --preset <preset>
 |---|---|
 | 코드 서식 자동 정리 | `cmake --build --preset <preset> --target format` |
 | 정리 안 된 곳 검사 | `cmake --build --preset <preset> --target format-check` |
-| 빌드하면서 clang-tidy 검사 | `cmake --preset <preset> -DVE_CLANG_TIDY=ON` 후 평소처럼 빌드 (Ninja/Makefile 프리셋만) |
+| 빌드하면서 clang-tidy 검사 | `cmake --preset <preset> -DVE_CLANG_TIDY=ON` 후 평소처럼 빌드 (`windows-msvc` 는 Visual Studio 코드 분석으로 돌고, 결과가 오류 목록에도 나온다) |
 
 ## 4. 모듈 구조
 
