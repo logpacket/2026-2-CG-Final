@@ -409,7 +409,7 @@ inline const void* bufferOffset(std::size_t bytes)
 |---|---|
 | `.editorconfig` | 5번 셰이더 항목 추가함 |
 | `.clang-tidy` | 4번 검사 4개 추가함. 지금 있는 소스·테스트 15개 파일에서 경고 없음을 확인했다 (clang-tidy 22.1.3, 팀 버전 23.1.3 으로 다시 확인 필요) |
-| `engine/gfx/` | 3번의 `VE_GL_CHECK()` / `checkGlErrors()` 와 [9.6](#96-정점과-버퍼) 의 `bufferOffset()` 은 아직 없다. GL 래퍼를 만들 때 함께 추가한다 |
+| `engine/gfx/` | 3번의 `VE_GL_CHECK()` / `checkGlErrors()` 는 `GlCheck.h`, [9.6](#96-정점과-버퍼) 의 `bufferOffset()` 은 `Mesh.cpp` 에 있다 |
 
 ### 후속 제안
 

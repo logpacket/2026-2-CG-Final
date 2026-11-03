@@ -1,17 +1,23 @@
 #include "app/App.h"
 
-#include <glad/glad.h>
+#include "core/geometry/Primitives.h"
+#include "engine/gfx/GlCheck.h"
+
 #include <GLFW/glfw3.h>
+#include <glm/mat4x4.hpp>
 
 namespace {
 
 constexpr int kWindowWidth = 1280;
 constexpr int kWindowHeight = 720;
 constexpr const char* kWindowTitle = "Interactive 3D Virtual Exhibition";
+constexpr float kFloorSizeMeters = 24.0f;
 
 }  // namespace
 
-App::App() : window_(kWindowWidth, kWindowHeight, kWindowTitle), imgui_(window_.handle())
+App::App()
+    : window_(kWindowWidth, kWindowHeight, kWindowTitle), imgui_(window_.handle()),
+      floor_(makePlane(kFloorSizeMeters)), exhibits_(loadExhibits(exhibitSpecs()))
 {
     settings_.vsync = window_.isVSync();
 }
@@ -55,11 +61,13 @@ void App::handleKeys()
 
 void App::render()
 {
-    // 창 크기가 바뀌어도 매 프레임 현재 크기로 뷰포트를 맞춘다.
-    const glm::ivec2 fb = window_.framebufferSize();
-    glViewport(0, 0, fb.x, fb.y);
-    glClearColor(settings_.clearColor.r, settings_.clearColor.g, settings_.clearColor.b, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    // 창 크기가 바뀌어도 매 프레임 현재 크기로 뷰포트와 화면 비율을 맞춘다.
+    renderer_.beginFrame(camera_, lighting_, window_.framebufferSize(), settings_.clearColor);
+    renderer_.draw(floor_, floorMaterial_, glm::mat4(1.0f));
+    for (const Exhibit& exhibit : exhibits_) {
+        renderer_.draw(exhibit.mesh, exhibit.material, exhibit.transform.matrix());
+    }
+    VE_GL_CHECK();  // 어디서 났는지 모르는 GL 오류를 매 프레임 한 번 잡는다
 }
 
 void App::drawUi()
