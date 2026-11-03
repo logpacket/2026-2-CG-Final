@@ -2,6 +2,8 @@
 #pragma once
 
 #include "core/FrameTimer.h"
+#include "engine/gfx/Mesh.h"
+#include "engine/gfx/Shader.h"
 #include "engine/platform/ImGuiLayer.h"
 #include "engine/platform/Window.h"
 #include "exhibition/ui/DebugPanel.h"
@@ -22,6 +24,8 @@ private:
     Window window_;
     ImGuiLayer imgui_;
     FrameTimer timer_;
+    Shader solidShader_;
+    Mesh box_;
 
     ui::DebugPanelSettings settings_;
     bool showUi_ = true;
