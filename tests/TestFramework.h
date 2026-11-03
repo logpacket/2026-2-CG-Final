@@ -73,6 +73,20 @@ struct Registrar {
         }                                                                                                    \
     } while (false)
 
+// 식이 예외를 던져야 통과한다. 던진 예외는 여기서 잡는다.
+#define CHECK_THROWS(expression)                                                                             \
+    do {                                                                                                     \
+        bool testThrew = false;                                                                              \
+        try {                                                                                                \
+            static_cast<void>(expression);                                                                   \
+        } catch (...) {                                                                                      \
+            testThrew = true;                                                                                \
+        }                                                                                                    \
+        if (!testThrew) {                                                                                    \
+            ::test::reportFailure(__FILE__, __LINE__, "CHECK_THROWS(" #expression ")");                      \
+        }                                                                                                    \
+    } while (false)
+
 // 3차원 벡터(glm::vec3 처럼 .x .y .z 가 있는 값) 비교: 세 성분이 모두 tolerance 안이어야 통과한다.
 #define CHECK_VEC3_NEAR(actual, expected, tolerance)                                                         \
     do {                                                                                                     \
